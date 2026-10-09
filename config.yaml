@@ -2,7 +2,7 @@
 seed: 42
 
 data:
-  source: iris               # "iris" (default, no download) | "csv"
+  source: csv               # "iris" (default, no download) | "csv"
   csv_path: data/UNSW_NB15_training-set.csv
   target: attack_cat         # label column when source == csv
   drop_columns: [id, label]  # non-feature columns to drop from the CSV
@@ -11,7 +11,7 @@ data:
 
 kmeans:
   implementation: scratch    # "sklearn" = provided baseline | "scratch" = YOUR implementation
-  k: 3
+  k: 24
   init: kmeans++             # "kmeans++" | "random"
   n_init: 10                 # random restarts; keep the lowest inertia
   max_iter: 300
@@ -21,8 +21,8 @@ kmeans:
 
 selection:                   # k-sweep for the elbow / silhouette figure
   silhouette_geometry: euclidean  # common space for k selection; or configured
-  k_min: 2
-  k_max: 8
+  k_min: 16
+  k_max: 40
 
 compare_to_reference: true   # when implementation=scratch, also run sklearn and report agreement
 
